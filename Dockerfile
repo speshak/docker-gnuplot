@@ -2,7 +2,12 @@ FROM alpine:3.9
 LABEL maintainer="Scott Peshak <scott@peshak.net>"
 
 RUN apk update && \
-  apk add --no-cache gnuplot python3 make curl
+  apk add --no-cache \
+    coreutils \
+    curl \
+    gnuplot \
+    make \
+    python3
 
 
 # Install aws-cli
