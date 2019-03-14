@@ -13,5 +13,11 @@ RUN apk update && \
 # Install aws-cli
 RUN apk -Uuv add groff less python py-pip && \
   pip install awscli && \
-  apk --purge -v del py-pip && \
-  rm /var/cache/apk/*
+  apk --purge -v del py-pip
+
+# Install fonts
+RUN apk --no-cache add msttcorefonts-installer fontconfig && \
+    update-ms-fonts && \
+    fc-cache -f
+
+RUN rm /var/cache/apk/*
